@@ -61,6 +61,12 @@
             height: 32px;
             animation: spin 1s linear infinite;
         }
+        .tts-loader {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #0F8A89;
+        }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -208,6 +214,42 @@
                 </div>
             </div>
         </section>
+
+        <!-- NEW: Gemini API Symptom Checker -->
+        <section id="symptom-checker" class="py-20 lg:py-28 bg-white">
+            <div class="container mx-auto max-w-6xl px-6">
+                <div class="bg-sand border border-gray-200/50 rounded-2xl p-8 lg:p-12 text-center fade-in">
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-teal-dark">✨ Analisador de Sintomas com IA</h2>
+                    <p class="text-lg text-neutral-gray mt-4 max-w-3xl mx-auto leading-relaxed">Seu pet não parece bem? Descreva os sintomas para receber uma orientação preliminar.</p>
+                    
+                    <div class="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto my-8 text-left">
+                        <div class="sm:col-span-2">
+                            <label for="symptoms-text" class="block text-sm font-medium text-teal-dark">Descreva os sintomas</label>
+                            <textarea id="symptoms-text" rows="3" class="mt-1 block w-full border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-teal-primary focus:border-teal-primary p-2" placeholder="Ex: Meu cachorro está vomitando e sem apetite..."></textarea>
+                        </div>
+                        <div>
+                            <label for="symptom-pet-species" class="block text-sm font-medium text-teal-dark">Espécie</label>
+                            <select id="symptom-pet-species" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-teal-primary focus:border-teal-primary">
+                                <option>Cachorro</option>
+                                <option>Gato</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button id="analyze-symptoms-btn" class="bg-teal-primary text-white font-bold px-8 py-4 rounded-lg text-lg hover:bg-teal-dark transition-transform hover:scale-105 shadow-lg">
+                        Analisar Sintomas
+                    </button>
+
+                    <div id="symptom-result" class="mt-8 text-left bg-white p-6 rounded-2xl border border-gray-200/50 shadow-inner" style="display: none;">
+                        <div id="symptom-loading-spinner" class="flex justify-center items-center py-8" style="display: none;">
+                            <div class="loader"></div>
+                        </div>
+                        <div id="symptom-content"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Testimonials Section -->
         <section id="testimonials" class="py-20 lg:py-28">
             <div class="container mx-auto max-w-6xl px-6">
@@ -271,7 +313,12 @@
                             <span class="faq-icon text-teal-primary text-2xl transform transition-transform duration-300">-</span>
                         </button>
                         <div class="faq-answer overflow-hidden max-h-screen">
-                            <p class="px-6 pb-6 text-neutral-gray leading-relaxed">Antes do procedimento, o pet passa por uma avaliação clínica. No dia da cirurgia, é feita anestesia geral, com todo o monitoramento necessário. A cirurgia dura em média de 30 a 60 minutos e, geralmente, o pet recebe alta no mesmo dia.</p>
+                            <div class="px-6 pb-6 text-neutral-gray leading-relaxed flex items-start gap-4">
+                                <p id="faq-answer-1">Antes do procedimento, o pet passa por uma avaliação clínica. No dia da cirurgia, é feita anestesia geral, com todo o monitoramento necessário. A cirurgia dura em média de 30 a 60 minutos e, geralmente, o pet recebe alta no mesmo dia.</p>
+                                <button class="tts-button flex-shrink-0" data-target="faq-answer-1" title="Ouvir a resposta">
+                                    <svg class="w-6 h-6 text-teal-primary hover:text-teal-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <!-- FAQ Item 2 -->
@@ -281,7 +328,12 @@
                             <span class="faq-icon text-teal-primary text-2xl transform transition-transform duration-300">+</span>
                         </button>
                         <div class="faq-answer overflow-hidden max-h-0">
-                            <p class="px-6 pb-6 text-neutral-gray leading-relaxed">Sim, é fundamental. Sempre realizamos exames de sangue e, quando necessário, testes de função renal, hepática e avaliação cardiológica. Isso garante que o animal esteja saudável e seguro para a anestesia.</p>
+                             <div class="px-6 pb-6 text-neutral-gray leading-relaxed flex items-start gap-4">
+                                <p id="faq-answer-2">Sim, é fundamental. Sempre realizamos exames de sangue e, quando necessário, testes de função renal, hepática e avaliação cardiológica. Isso garante que o animal esteja saudável e seguro para a anestesia.</p>
+                                <button class="tts-button flex-shrink-0" data-target="faq-answer-2" title="Ouvir a resposta">
+                                    <svg class="w-6 h-6 text-teal-primary hover:text-teal-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                      <!-- FAQ Item 3 -->
@@ -291,7 +343,12 @@
                             <span class="faq-icon text-teal-primary text-2xl transform transition-transform duration-300">+</span>
                         </button>
                         <div class="faq-answer overflow-hidden max-h-0">
-                            <p class="px-6 pb-6 text-neutral-gray leading-relaxed">O pet recebe medicação para dor e antibióticos. É importante usar o colar elizabetano para evitar que ele mexa nos pontos e restringir atividades físicas. O retorno para revisão acontece entre 7 a 10 dias.</p>
+                            <div class="px-6 pb-6 text-neutral-gray leading-relaxed flex items-start gap-4">
+                                <p id="faq-answer-3">O pet recebe medicação para dor e antibióticos. É importante usar o colar elizabetano para evitar que ele mexa nos pontos e restringir atividades físicas. O retorno para revisão acontece entre 7 a 10 dias.</p>
+                                <button class="tts-button flex-shrink-0" data-target="faq-answer-3" title="Ouvir a resposta">
+                                    <svg class="w-6 h-6 text-teal-primary hover:text-teal-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -375,105 +432,218 @@
     </a>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        // --- Helper functions for API calls and audio playback ---
+        function base64ToArrayBuffer(base64) {
+            const binaryString = window.atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        function pcmToWav(pcmData, sampleRate) {
+            const numChannels = 1;
+            const bitsPerSample = 16;
+            const blockAlign = (numChannels * bitsPerSample) / 8;
+            const byteRate = sampleRate * blockAlign;
+            const dataSize = pcmData.length * (bitsPerSample / 8);
+            const buffer = new ArrayBuffer(44 + dataSize);
+            const view = new DataView(buffer);
+
+            function writeString(view, offset, string) {
+                for (let i = 0; i < string.length; i++) {
+                    view.setUint8(offset + i, string.charCodeAt(i));
                 }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        const elements = document.querySelectorAll('.fade-in');
-        elements.forEach(el => observer.observe(el));
-
-        // --- FAQ Accordion ---
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        faqQuestions.forEach(button => {
-            const answer = button.nextElementSibling;
-            const icon = button.querySelector('.faq-icon');
-            
-            if (!button.parentElement.querySelector('.max-h-screen')) {
-                answer.style.maxHeight = '0px';
-                icon.textContent = '+';
             }
 
-            button.addEventListener('click', () => {
-                const isOpen = answer.style.maxHeight !== '0px';
-                if (isOpen) {
+            writeString(view, 0, 'RIFF');
+            view.setUint32(4, 36 + dataSize, true);
+            writeString(view, 8, 'WAVE');
+            writeString(view, 12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true);
+            view.setUint16(22, numChannels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, byteRate, true);
+            view.setUint16(32, blockAlign, true);
+            view.setUint16(34, bitsPerSample, true);
+            writeString(view, 36, 'data');
+            view.setUint32(40, dataSize, true);
+
+            for (let i = 0; i < pcmData.length; i++) {
+                view.setInt16(44 + i * 2, pcmData[i], true);
+            }
+
+            return new Blob([view], { type: 'audio/wav' });
+        }
+
+        // --- Main Application Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Fade-in on Scroll Animation ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+            // --- FAQ Accordion ---
+            document.querySelectorAll('.faq-question').forEach(button => {
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector('.faq-icon');
+                
+                if (!button.parentElement.querySelector('.max-h-screen')) {
                     answer.style.maxHeight = '0px';
                     icon.textContent = '+';
-                } else {
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                    icon.textContent = '-';
                 }
+
+                button.addEventListener('click', () => {
+                    const isOpen = answer.style.maxHeight !== '0px';
+                    if (isOpen) {
+                        answer.style.maxHeight = '0px';
+                        icon.textContent = '+';
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        icon.textContent = '-';
+                    }
+                });
+            });
+
+            // --- Gemini API Call Function ---
+            async function callGeminiApi(prompt, isTts = false) {
+                const apiKey = ""; // Leave empty
+                let model = "gemini-2.5-flash-preview-05-20";
+                let apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+                let payload;
+
+                if (isTts) {
+                    model = "gemini-2.5-flash-preview-tts";
+                    apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+                    payload = {
+                        contents: [{ parts: [{ text: prompt }] }],
+                        generationConfig: {
+                            responseModalities: ["AUDIO"],
+                            speechConfig: {
+                                voiceConfig: { prebuiltVoiceConfig: { voiceName: "Kore" } }
+                            }
+                        },
+                        model: model
+                    };
+                } else {
+                     payload = { contents: [{ parts: [{ text: prompt }] }] };
+                }
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+
+                const result = await response.json();
+
+                if (isTts) {
+                    const part = result?.candidates?.[0]?.content?.parts?.[0];
+                    if (part?.inlineData?.data && part?.inlineData?.mimeType.startsWith("audio/")) {
+                        return part.inlineData;
+                    } else {
+                        throw new Error("Invalid TTS response structure");
+                    }
+                } else {
+                    if (result.candidates && result.candidates[0].content.parts[0].text) {
+                        return result.candidates[0].content.parts[0].text;
+                    } else {
+                        throw new Error("Invalid text response structure");
+                    }
+                }
+            }
+
+            // --- Gemini API Symptom Checker ---
+            const analyzeBtn = document.getElementById('analyze-symptoms-btn');
+            if (analyzeBtn) {
+                const resultDiv = document.getElementById('symptom-result');
+                const spinner = document.getElementById('symptom-loading-spinner');
+                const contentDiv = document.getElementById('symptom-content');
+
+                analyzeBtn.addEventListener('click', async () => {
+                    const symptoms = document.getElementById('symptoms-text').value;
+                    const species = document.getElementById('symptom-pet-species').value;
+                    if (!symptoms.trim()) {
+                        alert('Por favor, descreva os sintomas do seu pet.');
+                        return;
+                    }
+
+                    resultDiv.style.display = 'block';
+                    spinner.style.display = 'flex';
+                    contentDiv.innerHTML = '';
+
+                    const prompt = `Aja como um assistente veterinário experiente. Um tutor de pet está preocupado com os seguintes sintomas em seu ${species}: '${symptoms}'. Com base nesses sintomas, forneça uma análise preliminar em um tom calmo e informativo. Divida a resposta nas seguintes seções: 'Possíveis Causas Gerais', 'Nível de Urgência Sugerido' (classifique como Não urgente, Urgente - agende uma consulta, ou Emergência - procure um veterinário imediatamente), e 'O que fazer agora'. É CRUCIAL que você comece a sua resposta com o seguinte aviso em negrito: '**AVISO IMPORTANTE: Esta é uma análise preliminar gerada por IA e NÃO substitui a consulta com um veterinário qualificado. Para um diagnóstico preciso, entre em contato conosco.**' Não tente diagnosticar uma doença específica. Foque em orientações gerais e na importância de procurar ajuda profissional.`;
+
+                    try {
+                        const text = await callGeminiApi(prompt);
+                        let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+                        contentDiv.innerHTML = `<p class="text-neutral-gray leading-relaxed">${formattedText}</p>`;
+                    } catch (error) {
+                        console.error("Error:", error);
+                        contentDiv.innerHTML = `<p class="text-red-500">Desculpe, ocorreu um erro ao analisar os sintomas. Tente novamente.</p>`;
+                    } finally {
+                        spinner.style.display = 'none';
+                    }
+                });
+            }
+
+            // --- Gemini API TTS for FAQ ---
+            const ttsButtons = document.querySelectorAll('.tts-button');
+            let currentAudio = null;
+
+            ttsButtons.forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+                    const targetId = button.dataset.target;
+                    const textElement = document.getElementById(targetId);
+                    const textToSpeak = textElement.textContent;
+                    
+                    const originalIcon = button.innerHTML;
+                    button.innerHTML = '<div class="loader tts-loader"></div>';
+                    button.disabled = true;
+
+                    if(currentAudio) {
+                        currentAudio.pause();
+                        currentAudio = null;
+                    }
+
+                    try {
+                        const audioData = await callGeminiApi(textToSpeak, true);
+                        const sampleRate = parseInt(audioData.mimeType.match(/rate=(\d+)/)[1], 10);
+                        const pcmData = base64ToArrayBuffer(audioData.data);
+                        const pcm16 = new Int16Array(pcmData);
+                        const wavBlob = pcmToWav(pcm16, sampleRate);
+                        const audioUrl = URL.createObjectURL(wavBlob);
+                        
+                        currentAudio = new Audio(audioUrl);
+                        currentAudio.play();
+                        currentAudio.onended = () => {
+                             button.innerHTML = originalIcon;
+                             button.disabled = false;
+                        };
+
+                    } catch (error) {
+                        console.error('TTS Error:', error);
+                        button.innerHTML = originalIcon;
+                        button.disabled = false;
+                    }
+                });
             });
         });
-
-            // --- Gemini API Care Plan Generator ---
-        const generateBtn = document.getElementById('generate-plan-btn');
-        
-        if (generateBtn) {
-            const resultDiv = document.getElementById('care-plan-result');
-            const spinner = document.getElementById('loading-spinner');
-            const planContent = document.getElementById('plan-content');
-
-            generateBtn.addEventListener('click', async () => {
-                const species = document.getElementById('pet-species').value;
-                const size = document.getElementById('pet-size').value;
-                const temperament = document.getElementById('pet-temperament').value;
-
-                resultDiv.style.display = 'block';
-                spinner.style.display = 'flex';
-                planContent.innerHTML = '';
-
-                const prompt = `Como um veterinário especialista, crie um plano de cuidados pós-operatório detalhado e de fácil compreensão para um ${species} de porte ${size} e temperamento ${temperament} que acabou de ser castrado. O plano deve ser dividido em seções claras: "Primeiras 24 Horas", "Primeira Semana", "Alimentação e Hidratação", "Medicação (geral)", e "Sinais de Alerta". Use uma linguagem acolhedora e tranquilizadora para o tutor.`;
-
-                try {
-                    const text = await callGeminiApi(prompt);
-                    
-                    let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                    formattedText = formattedText.replace(/\n/g, '<br>');
-
-                    planContent.innerHTML = `<h3 class="font-display text-2xl font-bold text-teal-dark mb-4">Seu Plano de Cuidados Personalizado</h3><p class="text-neutral-gray leading-relaxed">${formattedText}</p>`;
-
-                } catch (error) {
-                    console.error("Error calling Gemini API:", error);
-                    planContent.innerHTML = `<p class="text-red-500">Desculpe, ocorreu um erro ao gerar o plano. Por favor, tente novamente mais tarde.</p>`;
-                } finally {
-                    spinner.style.display = 'none';
-                }
-            });
-        }
-        
-        async function callGeminiApi(prompt) {
-            const apiKey = ""; // Leave empty
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }]
-            };
-
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            if (!response.ok) {
-                throw new Error(`API request failed with status ${response.status}`);
-            }
-
-            const result = await response.json();
-            
-            if (result.candidates && result.candidates[0].content.parts[0].text) {
-                return result.candidates[0].content.parts[0].text;
-            } else {
-                console.error("Unexpected API response structure:", result);
-                return "Não foi possível gerar o plano de cuidados. A resposta da IA estava vazia ou em um formato inesperado.";
-            }
-        }
     </script>
 </body>
 </html>
