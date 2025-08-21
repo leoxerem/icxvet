@@ -215,41 +215,6 @@
             </div>
         </section>
 
-        <!-- NEW: Gemini API Symptom Checker -->
-        <section id="symptom-checker" class="py-20 lg:py-28 bg-white">
-            <div class="container mx-auto max-w-6xl px-6">
-                <div class="bg-sand border border-gray-200/50 rounded-2xl p-8 lg:p-12 text-center fade-in">
-                    <h2 class="font-display text-3xl md:text-4xl font-bold text-teal-dark">✨ Analisador de Sintomas com IA</h2>
-                    <p class="text-lg text-neutral-gray mt-4 max-w-3xl mx-auto leading-relaxed">Seu pet não parece bem? Descreva os sintomas para receber uma orientação preliminar.</p>
-                    
-                    <div class="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto my-8 text-left">
-                        <div class="sm:col-span-2">
-                            <label for="symptoms-text" class="block text-sm font-medium text-teal-dark">Descreva os sintomas</label>
-                            <textarea id="symptoms-text" rows="3" class="mt-1 block w-full border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-teal-primary focus:border-teal-primary p-2" placeholder="Ex: Meu cachorro está vomitando e sem apetite..."></textarea>
-                        </div>
-                        <div>
-                            <label for="symptom-pet-species" class="block text-sm font-medium text-teal-dark">Espécie</label>
-                            <select id="symptom-pet-species" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-teal-primary focus:border-teal-primary">
-                                <option>Cachorro</option>
-                                <option>Gato</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <button id="analyze-symptoms-btn" class="bg-teal-primary text-white font-bold px-8 py-4 rounded-lg text-lg hover:bg-teal-dark transition-transform hover:scale-105 shadow-lg">
-                        Analisar Sintomas
-                    </button>
-
-                    <div id="symptom-result" class="mt-8 text-left bg-white p-6 rounded-2xl border border-gray-200/50 shadow-inner" style="display: none;">
-                        <div id="symptom-loading-spinner" class="flex justify-center items-center py-8" style="display: none;">
-                            <div class="loader"></div>
-                        </div>
-                        <div id="symptom-content"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Testimonials Section -->
         <section id="testimonials" class="py-20 lg:py-28">
             <div class="container mx-auto max-w-6xl px-6">
@@ -432,54 +397,6 @@
     </a>
 
     <script>
-        // --- Helper functions for API calls and audio playback ---
-        function base64ToArrayBuffer(base64) {
-            const binaryString = window.atob(base64);
-            const len = binaryString.length;
-            const bytes = new Uint8Array(len);
-            for (let i = 0; i < len; i++) {
-                bytes[i] = binaryString.charCodeAt(i);
-            }
-            return bytes.buffer;
-        }
-
-        function pcmToWav(pcmData, sampleRate) {
-            const numChannels = 1;
-            const bitsPerSample = 16;
-            const blockAlign = (numChannels * bitsPerSample) / 8;
-            const byteRate = sampleRate * blockAlign;
-            const dataSize = pcmData.length * (bitsPerSample / 8);
-            const buffer = new ArrayBuffer(44 + dataSize);
-            const view = new DataView(buffer);
-
-            function writeString(view, offset, string) {
-                for (let i = 0; i < string.length; i++) {
-                    view.setUint8(offset + i, string.charCodeAt(i));
-                }
-            }
-
-            writeString(view, 0, 'RIFF');
-            view.setUint32(4, 36 + dataSize, true);
-            writeString(view, 8, 'WAVE');
-            writeString(view, 12, 'fmt ');
-            view.setUint32(16, 16, true);
-            view.setUint16(20, 1, true);
-            view.setUint16(22, numChannels, true);
-            view.setUint32(24, sampleRate, true);
-            view.setUint32(28, byteRate, true);
-            view.setUint16(32, blockAlign, true);
-            view.setUint16(34, bitsPerSample, true);
-            writeString(view, 36, 'data');
-            view.setUint32(40, dataSize, true);
-
-            for (let i = 0; i < pcmData.length; i++) {
-                view.setInt16(44 + i * 2, pcmData[i], true);
-            }
-
-            return new Blob([view], { type: 'audio/wav' });
-        }
-
-        // --- Main Application Logic ---
         document.addEventListener('DOMContentLoaded', () => {
             // --- Fade-in on Scroll Animation ---
             const observer = new IntersectionObserver((entries) => {
@@ -565,40 +482,6 @@
                         throw new Error("Invalid text response structure");
                     }
                 }
-            }
-
-            // --- Gemini API Symptom Checker ---
-            const analyzeBtn = document.getElementById('analyze-symptoms-btn');
-            if (analyzeBtn) {
-                const resultDiv = document.getElementById('symptom-result');
-                const spinner = document.getElementById('symptom-loading-spinner');
-                const contentDiv = document.getElementById('symptom-content');
-
-                analyzeBtn.addEventListener('click', async () => {
-                    const symptoms = document.getElementById('symptoms-text').value;
-                    const species = document.getElementById('symptom-pet-species').value;
-                    if (!symptoms.trim()) {
-                        alert('Por favor, descreva os sintomas do seu pet.');
-                        return;
-                    }
-
-                    resultDiv.style.display = 'block';
-                    spinner.style.display = 'flex';
-                    contentDiv.innerHTML = '';
-
-                    const prompt = `Aja como um assistente veterinário experiente. Um tutor de pet está preocupado com os seguintes sintomas em seu ${species}: '${symptoms}'. Com base nesses sintomas, forneça uma análise preliminar em um tom calmo e informativo. Divida a resposta nas seguintes seções: 'Possíveis Causas Gerais', 'Nível de Urgência Sugerido' (classifique como Não urgente, Urgente - agende uma consulta, ou Emergência - procure um veterinário imediatamente), e 'O que fazer agora'. É CRUCIAL que você comece a sua resposta com o seguinte aviso em negrito: '**AVISO IMPORTANTE: Esta é uma análise preliminar gerada por IA e NÃO substitui a consulta com um veterinário qualificado. Para um diagnóstico preciso, entre em contato conosco.**' Não tente diagnosticar uma doença específica. Foque em orientações gerais e na importância de procurar ajuda profissional.`;
-
-                    try {
-                        const text = await callGeminiApi(prompt);
-                        let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
-                        contentDiv.innerHTML = `<p class="text-neutral-gray leading-relaxed">${formattedText}</p>`;
-                    } catch (error) {
-                        console.error("Error:", error);
-                        contentDiv.innerHTML = `<p class="text-red-500">Desculpe, ocorreu um erro ao analisar os sintomas. Tente novamente.</p>`;
-                    } finally {
-                        spinner.style.display = 'none';
-                    }
-                });
             }
 
             // --- Gemini API TTS for FAQ ---
