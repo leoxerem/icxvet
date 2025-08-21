@@ -1,532 +1,519 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICX VET - Castração Segura e Humanizada</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Poppins & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <script>
-        // Custom Tailwind CSS Configuration
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'teal-primary': '#0F8A89',
-                        'teal-dark': '#0D3B3B',
-                        'accent-orange': '#F39A58',
-                        'sand': '#FFF7F1',
-                        'neutral-gray': '#5B6B73',
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'sans-serif'],
-                        'display': ['Poppins', 'sans-serif'],
-                    },
-                    borderRadius: {
-                        '2xl': '1.5rem', // 24px
-                    }
-                }
-            }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ICX VET - Castração Segura e Humanizada</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Poppins & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'teal-primary': '#0F8A89',
+            'teal-dark': '#0D3B3B',
+            'accent-orange': '#F39A58',
+            'sand': '#FFF7F1',
+            'neutral-gray': '#5B6B73',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'sans-serif'],
+            'display': ['Poppins', 'sans-serif'],
+          },
+          borderRadius: {
+            '2xl': '1.5rem',
+          }
         }
-    </script>
-    
-    <style>
-        /* Animation for fade-in on scroll */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* FAQ Accordion transition */
-        .faq-answer {
-            transition: max-height 0.4s ease-in-out;
-        }
-        /* Loading spinner */
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #0F8A89; /* Use teal-primary */
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .faq-answer { transition: max-height 0.4s ease-in-out; }
+    .loader {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #0F8A89;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { 0% {transform: rotate(0deg);} 100% {transform: rotate(360deg);} }
+  </style>
 </head>
 <body class="bg-sand text-neutral-gray antialiased">
 
-    <!-- 0. Navigation Bar (Fixed) -->
-    <header id="navbar" class="bg-white/90 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-sm">
-        <div class="container mx-auto max-w-6xl px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-display font-bold text-teal-primary">ICX VET</a>
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="#hero" class="text-neutral-gray hover:text-teal-primary transition-colors">Início</a>
-                <a href="#how-it-works" class="text-neutral-gray hover:text-teal-primary transition-colors">Como Funciona</a>
-                <a href="#why-us" class="text-neutral-gray hover:text-teal-primary transition-colors">Diferenciais</a>
-                <a href="#testimonials" class="text-neutral-gray hover:text-teal-primary transition-colors">Depoimentos</a>
-                <a href="#faq" class="text-neutral-gray hover:text-teal-primary transition-colors">Dúvidas</a>
-            </nav>
-            <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="hidden md:inline-block bg-teal-primary text-white font-semibold px-5 py-2 rounded-lg hover:bg-teal-dark transition-all hover:scale-105 shadow-sm">
-                Agendar Consulta
+  <!-- Navbar -->
+  <header id="navbar" class="bg-white/90 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-sm">
+    <div class="container mx-auto max-w-6xl px-6 py-4 flex justify-between items-center">
+      <a href="#" class="text-2xl font-display font-bold text-teal-primary">ICX VET</a>
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#hero" class="text-neutral-gray hover:text-teal-primary transition-colors">Início</a>
+        <a href="#how-it-works" class="text-neutral-gray hover:text-teal-primary transition-colors">Como Funciona</a>
+        <a href="#why-us" class="text-neutral-gray hover:text-teal-primary transition-colors">Diferenciais</a>
+        <a href="#testimonials" class="text-neutral-gray hover:text-teal-primary transition-colors">Depoimentos</a>
+        <a href="#faq" class="text-neutral-gray hover:text-teal-primary transition-colors">Dúvidas</a>
+      </nav>
+      <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta."
+         target="_blank"
+         class="hidden md:inline-block bg-teal-primary text-white font-semibold px-5 py-2 rounded-lg hover:bg-teal-dark transition-all hover:scale-105 shadow-sm">
+        Agendar Consulta
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="hero" class="pt-32 pb-20 lg:pt-40 lg:pb-28">
+      <div class="container mx-auto max-w-6xl px-6">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="text-center lg:text-left">
+            <h1 class="font-display text-3xl md:text-4xl lg:text-[44px] font-bold text-teal-dark leading-tight mb-6 fade-in">
+              Castração Segura e Humanizada para Cães e Gatos no Rio de Janeiro
+            </h1>
+            <p class="text-lg text-neutral-gray mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed fade-in" style="animation-delay: 0.1s;">
+              Oferecemos um cuidado especializado em castração, com a estrutura e o carinho que seu pet merece para uma recuperação tranquila.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10 fade-in" style="animation-delay: 0.2s;">
+              <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta."
+                 target="_blank"
+                 class="bg-teal-primary text-white font-bold px-8 py-4 rounded-lg text-lg hover:bg-teal-dark transition-transform hover:scale-105 shadow-lg">
+                Agendar no WhatsApp
+              </a>
+              <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida."
+                 target="_blank"
+                 class="bg-transparent text-teal-primary font-bold px-8 py-4 rounded-lg text-lg hover:bg-teal-primary/10 transition-colors border-2 border-teal-primary">
+                Tirar dúvidas
+              </a>
+            </div>
+            <div class="grid grid-cols-3 gap-4 text-center fade-in" style="animation-delay: 0.3s;">
+              <div class="flex flex-col items-center">
+                <span class="font-bold text-teal-dark">10+ Anos</span>
+                <span class="text-sm text-neutral-gray">de Experiência</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <span class="font-bold text-teal-dark">Cães e Gatos</span>
+                <span class="text-sm text-neutral-gray">Especializados</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <span class="font-bold text-teal-dark">CRMV-RJ Ativo</span>
+                <span class="text-sm text-neutral-gray">Ambiente Seguro</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Foto com ajuste de foco -->
+          <div class="relative w-full h-[500px] fade-in" style="animation-delay: 0.2s;">
+            <div class="absolute inset-0 bg-teal-primary/70 rounded-2xl z-10"></div>
+            <img src="dra-cleyde.jpg"
+                 alt="Foto da Dra. Cleyde, veterinária responsável pela ICX VET"
+                 class="absolute inset-0 w-full h-full object-cover object-top rounded-2xl"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section id="how-it-works" class="py-20 lg:py-28 bg-white">
+      <div class="container mx-auto max-w-6xl px-6">
+        <div class="text-center mb-16">
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-teal-dark fade-in">Como Funciona o Procedimento</h2>
+          <p class="text-lg text-neutral-gray mt-4 max-w-2xl mx-auto leading-relaxed fade-in" style="animation-delay: 0.1s;">Um processo pensado em 4 etapas para garantir total segurança e tranquilidade.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-sand p-8 rounded-2xl text-center fade-in" style="animation-delay: 0.1s;">
+            <div class="text-4xl mb-4">📞</div>
+            <h3 class="font-display text-xl font-bold text-teal-dark mb-2">1. Agendamento</h3>
+            <p class="text-neutral-gray leading-relaxed">Entre em contato pelo WhatsApp para tirar dúvidas e marcar a consulta inicial.</p>
+          </div>
+          <div class="bg-sand p-8 rounded-2xl text-center fade-in" style="animation-delay: 0.2s;">
+            <div class="text-4xl mb-4">🩺</div>
+            <h3 class="font-display text-xl font-bold text-teal-dark mb-2">2. Avaliação</h3>
+            <p class="text-neutral-gray leading-relaxed">Realizamos uma avaliação clínica e exames para garantir que seu pet está apto.</p>
+          </div>
+          <div class="bg-sand p-8 rounded-2xl text-center fade-in" style="animation-delay: 0.3s;">
+            <div class="text-4xl mb-4">⚕️</div>
+            <h3 class="font-display text-xl font-bold text-teal-dark mb-2">3. Castração</h3>
+            <p class="text-neutral-gray leading-relaxed">O procedimento é feito com anestesia e monitoramento em ambiente seguro.</p>
+          </div>
+          <div class="bg-sand p-8 rounded-2xl text-center fade-in" style="animation-delay: 0.4s;">
+            <div class="text-4xl mb-4">🏠</div>
+            <h3 class="font-display text-xl font-bold text-teal-dark mb-2">4. Pós-operatório</h3>
+            <p class="text-neutral-gray leading-relaxed">Você recebe todas as orientações para uma recuperação tranquila em casa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section id="why-us" class="py-20 lg:py-28">
+      <div class="container mx-auto max-w-6xl px-6">
+        <div class="text-center mb-16">
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-teal-dark fade-in">Nossos Diferenciais</h2>
+          <p class="text-lg text-neutral-gray mt-4 max-w-2xl mx-auto leading-relaxed fade-in" style="animation-delay: 0.1s;">Cuidado, técnica e segurança que fazem a diferença.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-x-12 gap-y-10 max-w-4xl mx-auto">
+          <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.1s;">
+            <div class="text-3xl text-accent-orange">✓</div>
+            <div>
+              <h3 class="font-display text-xl font-bold text-teal-dark mb-1">Especialização em Castração</h3>
+              <p class="text-neutral-gray leading-relaxed">Foco total em procedimentos seguros e humanizados para cães e gatos.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.2s;">
+            <div class="text-3xl text-accent-orange">✓</div>
+            <div>
+              <h3 class="font-display text-xl font-bold text-teal-dark mb-1">Atendimento Humanizado</h3>
+              <p class="text-neutral-gray leading-relaxed">Seu pet é tratado com carinho, paciência e respeito em todas as etapas.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.3s;">
+            <div class="text-3xl text-accent-orange">✓</div>
+            <div>
+              <h3 class="font-display text-xl font-bold text-teal-dark mb-1">Experiência e Confiança</h3>
+              <p class="text-neutral-gray leading-relaxed">Mais de 10 anos de atuação e centenas de famílias satisfeitas.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.4s;">
+            <div class="text-3xl text-accent-orange">✓</div>
+            <div>
+              <h3 class="font-display text-xl font-bold text-teal-dark mb-1">Suporte Pós-Operatório</h3>
+              <p class="text-neutral-gray leading-relaxed">Acompanhamento completo para garantir a recuperação tranquila do seu pet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plano de Cuidados com IA -->
+    <section id="gemini-care-plan" class="py-20 lg:py-28 bg-white">
+      <div class="container mx-auto max-w-6xl px-6">
+        <div class="bg-sand border border-gray-200/50 rounded-2xl p-8 lg:p-12 text-center fade-in">
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-teal-dark">✨ Plano de Cuidados Pós-Operatório com IA</h2>
+          <p class="text-lg text-neutral-gray mt-4 max-w-3xl mx-auto leading-relaxed">Receba um guia personalizado para a recuperação do seu pet. Preencha os campos abaixo para começar.</p>
+
+          <div class="grid sm:grid-cols-3 gap-6 max-w-2xl mx-auto my-8 text-left">
+            <div>
+              <label for="pet-species" class="block text-sm font-medium text-teal-dark">Espécie</label>
+              <select id="pet-species" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-teal-primary focus:border-teal-primary">
+                <option>Cachorro</option>
+                <option>Gato</option>
+              </select>
+            </div>
+            <div>
+              <label for="pet-size" class="block text-sm font-medium text-teal-dark">Porte</label>
+              <select id="pet-size" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-teal-primary focus:border-teal-primary">
+                <option>Pequeno</option>
+                <option>Médio</option>
+                <option>Grande</option>
+              </select>
+            </div>
+            <div>
+              <label for="pet-temperament" class="block text-sm font-medium text-teal-dark">Temperamento</label>
+              <select id="pet-temperament" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-teal-primary focus:border-teal-primary">
+                <option>Calmo</option>
+                <option>Agitado</option>
+                <option>Ansioso</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="generate-plan-btn" class="bg-teal-primary text-white font-bold px-8 py-4 rounded-lg text-lg hover:bg-teal-dark transition-transform hover:scale-105 shadow-lg">
+            Gerar Plano de Cuidados
+          </button>
+
+          <div id="care-plan-result" class="mt-8 text-left bg-white p-6 rounded-2xl border border-gray-200/50 shadow-inner" style="display: none;">
+            <div id="loading-spinner" class="flex justify-center items-center py-8" style="display: none;">
+              <div class="loader"></div>
+            </div>
+            <div id="plan-content"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="testimonials" class="py-20 lg:py-28">
+      <div class="container mx-auto max-w-6xl px-6">
+        <div class="text-center mb-16">
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-teal-dark fade-in">O que nossos clientes dizem</h2>
+          <p class="text-lg text-neutral-gray mt-4 max-w-2xl mx-auto leading-relaxed fade-in" style="animation-delay: 0.1s;">A confiança de quem já passou por aqui é nossa maior recompensa.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-2xl fade-in" style="animation-delay: 0.1s;">
+            <div class="text-5xl text-teal-primary/20 mb-4">“</div>
+            <p class="text-neutral-gray italic mb-6 leading-relaxed">A Dra. Cleyde cuidou do meu cachorro com todo carinho. A castração foi tranquila e recebi todas as orientações. Excelente profissional!</p>
+            <div class="flex items-center gap-4">
+              <img src="https://i.pravatar.cc/150?img=12" alt="Avatar de Márcio" class="w-12 h-12 rounded-full object-cover"/>
+              <div>
+                <p class="font-bold text-teal-dark">Márcio, Méier</p>
+                <p class="text-yellow-500">★★★★★</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-8 rounded-2xl fade-in" style="animation-delay: 0.2s;">
+            <div class="text-5xl text-teal-primary/20 mb-4">“</div>
+            <p class="text-neutral-gray italic mb-6 leading-relaxed">Levei minha gata para castrar e fiquei muito satisfeita. Ela explicou tudo com paciência e transmitiu segurança em cada etapa.</p>
+            <div class="flex items-center gap-4">
+              <img src="https://i.pravatar.cc/150?img=5" alt="Avatar de Ingrid" class="w-12 h-12 rounded-full object-cover"/>
+              <div>
+                <p class="font-bold text-teal-dark">Ingrid, Rio das Pedras</p>
+                <p class="text-yellow-500">★★★★★</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-8 rounded-2xl fade-in" style="animation-delay: 0.3s;">
+            <div class="text-5xl text-teal-primary/20 mb-4">“</div>
+            <p class="text-neutral-gray italic mb-6 leading-relaxed">A Dra. Cleyde é maravilhosa! Minha cadelinha foi tratada como se fosse da família. Recomendo a todos que buscam um atendimento humanizado.</p>
+            <div class="flex items-center gap-4">
+              <img src="https://i.pravatar.cc/150?img=32" alt="Avatar de Bruna" class="w-12 h-12 rounded-full object-cover"/>
+              <div>
+                <p class="font-bold text-teal-dark">Bruna, Recreio</p>
+                <p class="text-yellow-500">★★★★★</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 lg:py-28 bg-white">
+      <div class="container mx-auto max-w-6xl px-6">
+        <div class="text-center mb-16">
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-teal-dark fade-in">Perguntas Frequentes</h2>
+          <p class="text-lg text-neutral-gray mt-4 max-w-2xl mx-auto leading-relaxed fade-in" style="animation-delay: 0.1s;">Tire suas principais dúvidas sobre o procedimento de castração.</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-4 fade-in" style="animation-delay: 0.2s;">
+          <div class="bg-sand border border-gray-200/50 rounded-2xl shadow-sm">
+            <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg text-teal-dark">
+              <span>Como funciona a castração?</span>
+              <span class="faq-icon text-teal-primary text-2xl transform transition-transform duration-300">-</span>
+            </button>
+            <div class="faq-answer overflow-hidden max-h-screen">
+              <p class="px-6 pb-6 text-neutral-gray leading-relaxed">
+                Antes do procedimento, o pet passa por uma avaliação clínica. No dia da cirurgia, é feita anestesia geral, com todo o monitoramento necessário. A cirurgia dura em média de 30 a 60 minutos e, geralmente, o pet recebe alta no mesmo dia.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-sand border border-gray-200/50 rounded-2xl shadow-sm">
+            <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg text-teal-dark">
+              <span>Precisa de exames antes da castração?</span>
+              <span class="faq-icon text-teal-primary text-2xl transform transition-transform duration-300">+</span>
+            </button>
+            <div class="faq-answer overflow-hidden max-h-0">
+              <p class="px-6 pb-6 text-neutral-gray leading-relaxed">
+                Sim, é fundamental. Sempre realizamos exames de sangue (hemograma completo) e, quando necessário, testes de função renal, hepática e avaliação cardiológica. Isso garante que o animal esteja saudável e seguro para a anestesia.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-sand border border-gray-200/50 rounded-2xl shadow-sm">
+            <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg text-teal-dark">
+              <span>Como funciona o pós-operatório?</span>
+              <span class="faq-icon text-teal-primary text-2xl transform transition-transform duration-300">+</span>
+            </button>
+            <div class="faq-answer overflow-hidden max-h-0">
+              <p class="px-6 pb-6 text-neutral-gray leading-relaxed">
+                O pet recebe medicação para dor e antibióticos, se necessário. É importante usar o colar elizabetano para evitar que ele mexa nos pontos e restringir atividades físicas. O retorno para revisão acontece entre 7 a 10 dias.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section id="final-cta" class="py-20 lg:py-28 bg-gradient-to-br from-teal-primary to-teal-dark text-white">
+      <div class="container mx-auto max-w-6xl px-6">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="text-center lg:text-left fade-in">
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+              Seu pet merece cuidado e segurança.
+            </h2>
+            <p class="text-lg text-white/90 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              Agende a castração agora e garanta o bem-estar do seu melhor amigo.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta."
+                 target="_blank"
+                 class="bg-white text-teal-primary font-bold px-8 py-4 rounded-lg text-lg hover:bg-sand transition-transform hover:scale-105 shadow-lg">
+                Agendar no WhatsApp
+              </a>
+              <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida."
+                 target="_blank"
+                 class="bg-transparent text-white font-bold px-8 py-4 rounded-lg text-lg hover:bg-white/10 transition-colors border-2 border-white">
+                Tirar dúvidas
+              </a>
+            </div>
+          </div>
+          <div class="flex justify-center fade-in" style="animation-delay: 0.2s;">
+            <img src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42?q=80&w=1974&auto=format&fit=crop" alt="Gato relaxado usando um colar elizabetano após a cirurgia" class="w-full max-w-md rounded-2xl shadow-2xl"/>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-teal-dark text-white">
+    <div class="container mx-auto max-w-6xl px-6 py-16">
+      <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-12">
+        <div class="md:col-span-3 lg:col-span-1">
+          <h3 class="text-2xl font-display font-bold mb-4">ICX VET</h3>
+          <p class="text-white/70 leading-relaxed">Cuidado veterinário especializado em castração de cães e gatos, com foco em segurança e atendimento humanizado.</p>
+        </div>
+        <div>
+          <h4 class="font-display font-bold mb-4">Contato</h4>
+          <ul class="space-y-2 text-white/70">
+            <li><a href="tel:+5521995751829" class="hover:text-white">(21) 99575-1829</a></li>
+            <li><p>Atendimento: Seg a Sex, 9h-18h</p></li>
+            <li><p>Rio de Janeiro - RJ</p></li>
+            <li><a href="https://maps.google.com/?q=Rio+de+Janeiro" target="_blank" class="hover:text-white underline">Como chegar</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-display font-bold mb-4">Informações</h4>
+          <ul class="space-y-2 text-white/70">
+            <li><p>CRMV-RJ: 12345</p></li>
+            <li><p>CNPJ: 00.123.456/0001-78</p></li>
+            <li><a href="#faq" class="hover:text-white">Dúvidas Frequentes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-display font-bold mb-4">Redes Sociais</h4>
+          <div class="flex space-x-4">
+            <a href="https://www.instagram.com/icx_vet/" target="_blank" class="hover:opacity-80" aria-label="Instagram">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm6.406-1.683c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg>
             </a>
+            <a href="https://www.facebook.com/cleyde.xerem.2025/" target="_blank" class="hover:opacity-80" aria-label="Facebook">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg>
+            </a>
+          </div>
         </div>
-    </header>
+      </div>
+      <div class="border-t border-white/10 mt-12 pt-8 text-center text-sm text-white/50">
+        <p>&copy; 2025 ICX VET. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
 
-    <main>
-        <!-- 1. Hero Section -->
-        <section id="hero" class="pt-32 pb-20 lg:pt-40 lg:pb-28">
-            <div class="container mx-auto max-w-6xl px-6">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="text-center lg:text-left">
-                        <h1 class="font-display text-3xl md:text-4xl lg:text-[44px] font-bold text-teal-dark leading-tight mb-6 fade-in">
-                            Castração Segura e Humanizada para Cães e Gatos no Rio de Janeiro
-                        </h1>
-                        <p class="text-lg text-neutral-gray mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed fade-in" style="animation-delay: 0.1s;">
-                            Oferecemos um cuidado especializado em castração, com a estrutura e o carinho que seu pet merece para uma recuperação tranquila.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10 fade-in" style="animation-delay: 0.2s;">
-                            <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="bg-teal-primary text-white font-bold px-8 py-4 rounded-lg text-lg hover:bg-teal-dark transition-transform hover:scale-105 shadow-lg">
-                                Agendar no WhatsApp
-                            </a>
-                            <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida." target="_blank" class="bg-transparent text-teal-primary font-bold px-8 py-4 rounded-lg text-lg hover:bg-teal-primary/10 transition-colors border-2 border-teal-primary">
-                                Tirar dúvidas
-                            </a>
-                        </div>
-                        <div class="grid grid-cols-3 gap-4 text-center fade-in" style="animation-delay: 0.3s;">
-                            <div class="flex flex-col items-center">
-                                <span class="font-bold text-teal-dark">10+ Anos</span>
-                                <span class="text-sm text-neutral-gray">de Experiência</span>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <span class="font-bold text-teal-dark">Cães e Gatos</span>
-                                <span class="text-sm text-neutral-gray">Especializados</span>
-                            </div>
-                             <div class="flex flex-col items-center">
-                                <span class="font-bold text-teal-dark">CRMV-RJ Ativo</span>
-                                <span class="text-sm text-neutral-gray">Ambiente Seguro</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative w-full h-80 lg:h-full min-h-[400px] fade-in" style="animation-delay: 0.2s;">
-                         <div class="absolute inset-0 bg-teal-primary/70 rounded-2xl z-10"></div>
-                         <img src="dra-cleyde.jpg" alt="Foto da veterinária responsável pela ICX VET" 
-     class="absolute inset-0 w-full h-full object-contain rounded-2xl bg-white">
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- WhatsApp flutuante (mobile) -->
+  <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta."
+     target="_blank"
+     class="md:hidden fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg z-40"
+     aria-label="Falar no WhatsApp">
+    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.269.655 4.398 1.919 6.161l-.219 1.023.992.494 2.238-1.233.122.062zm4.383-5.187c-.099-.149-.523-.265-.738-.325-.214-.06-.487-.061-.701.061-.213.122-.339.265-.438.41-.099.149-.198.335-.297.521-.099.185-.198.395-.297.581-.247.456-.516.927-.814 1.343-.325.456-.714.949-1.085 1.218-.522.38-1.036.531-1.549.531-.512 0-1.023-.099-1.435-.297-.412-.198-.799-.465-1.124-.799-.325-.335-.581-.714-.78-1.124-.198-.412-.308-.869-.308-1.355 0-.198.031-.385.099-.581.06-.185.12-.359.219-.521.12-.185.265-.359.438-.504.173-.149.384-.236.612-.236.229 0 .438.06.612.185.173.122.282.297.38.482.099.185.149.41.149.631 0 .229-.03.438-.099.631-.06.185-.12.359-.219.521-.099.164-.186.319-.264.456-.08.135-.149.264-.208.38-.06.109-.099.208-.12.297-.03.089-.03.176-.03.247 0 .06.011.121.031.185.02.06.06.135.12.219.06.089.135.176.219.264.089.089.186.164.297.247.109.089.219.149.335.198.12.049.247.079.38.079.135 0 .264-.03.38-.099.12-.06.219-.135.297-.219.08-.089.149-.186.208-.297.06-.109.109-.219.149-.335l.12-.41c.06-.185.12-.359.219-.521.099-.164.236-.297.41-.395.173-.099.359-.149.561-.149.198 0 .385.049.531.149.149.099.265.236.359.41.099.173.149.384.149.612 0 .229-.049.438-.149.631-.099.198-.219.385-.38.561-.164.173-.359.329-.581.456-.219.121-.465.198-.738.219-.264.03-.531.03-.78-.03-.247-.06-.482-.149-.691-.264l-.109-.06c-.219-.122-.428-.265-.612-.438-.185-.173-.359-.38-.504-.612s-.236-.482-.297-.738c-.06-.247-.06-.494-.03-.728.03-.236.099-.465.198-.681.099-.219.219-.428.38-.612.163-.186.358-.359.581-.521.219-.164.465-.297.738-.395.273-.099.561-.149.869-.149.308 0 .605.049.892.149.288.099.552.236.799.41.247.173.465.384.651.631.185.247.329.516.438.814.109.297.164.612.164.938 0 .412-.079.814-.236 1.192-.149.38-.359.728-.612 1.036-.247.308-.531.581-.856.814-.325.236-.681.438-1.06.591-.38.149-.78.219-1.192.219-.482 0-.951-.089-1.408-.264-.456-.173-.882-.41-1.278-.714-.396-.308-.752-.691-1.06-1.148s-.541-.975-.714-1.549c-.173-.571-.264-1.166-.264-1.785 0-.297.04-.581.12-.856.08-.273.186-.531.308-.769.12-.236.264-.456.427-.651.164-.198.359-.372.581-.521.219-.149.465-.265.728-.344.264-.089.531-.135.814-.135.273 0 .531.049.78.149.247.099.465.219.651.359.185.135.339.297.465.482.12.185.198.395.236.612.04.219.04.438.03.651-.011.219-.06.428-.135.612-.08.186-.173.35-.297.494z"/></svg>
+  </a>
 
-        <!-- "Como Funciona" Section -->
-        <section id="how-it-works" class="py-20 lg:py-28 bg-white">
-            <div class="container mx-auto max-w-6xl px-6">
-                <div class="text-center mb-16">
-                    <h2 class="font-display text-3xl md:text-4xl font-bold text-teal-dark fade-in">Como Funciona o Procedimento</h2>
-                    <p class="text-lg text-neutral-gray mt-4 max-w-2xl mx-auto leading-relaxed fade-in" style="animation-delay: 0.1s;">Um processo pensado em 4 etapas para garantir total segurança e tranquilidade.</p>
-                </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Card 1 -->
-                    <div class="bg-sand p-8 rounded-2xl text-center fade-in" style="animation-delay: 0.1s;">
-                        <div class="text-4xl mb-4">📞</div>
-                        <h3 class="font-display text-xl font-bold text-teal-dark mb-2">1. Agendamento</h3>
-                        <p class="text-neutral-gray leading-relaxed">Entre em contato pelo WhatsApp para tirar dúvidas e marcar a consulta inicial.</p>
-                    </div>
-                     <!-- Card 2 -->
-                    <div class="bg-sand p-8 rounded-2xl text-center fade-in" style="animation-delay: 0.2s;">
-                        <div class="text-4xl mb-4">🩺</div>
-                        <h3 class="font-display text-xl font-bold text-teal-dark mb-2">2. Avaliação</h3>
-                        <p class="text-neutral-gray leading-relaxed">Realizamos uma avaliação clínica e exames para garantir que seu pet está apto.</p>
-                    </div>
-                     <!-- Card 3 -->
-                    <div class="bg-sand p-8 rounded-2xl text-center fade-in" style="animation-delay: 0.3s;">
-                        <div class="text-4xl mb-4">⚕️</div>
-                        <h3 class="font-display text-xl font-bold text-teal-dark mb-2">3. Castração</h3>
-                        <p class="text-neutral-gray leading-relaxed">O procedimento é feito com anestesia e monitoramento em ambiente seguro.</p>
-                    </div>
-                     <!-- Card 4 -->
-                    <div class="bg-sand p-8 rounded-2xl text-center fade-in" style="animation-delay: 0.4s;">
-                        <div class="text-4xl mb-4">🏠</div>
-                        <h3 class="font-display text-xl font-bold text-teal-dark mb-2">4. Pós-operatório</h3>
-                        <p class="text-neutral-gray leading-relaxed">Você recebe todas as orientações para uma recuperação tranquila em casa.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Fade-in ao rolar
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        <!-- "Diferenciais" Section -->
-        <section id="why-us" class="py-20 lg:py-28">
-             <div class="container mx-auto max-w-6xl px-6">
-                <div class="text-center mb-16">
-                    <h2 class="font-display text-3xl md:text-4xl font-bold text-teal-dark fade-in">Nossos Diferenciais</h2>
-                    <p class="text-lg text-neutral-gray mt-4 max-w-2xl mx-auto leading-relaxed fade-in" style="animation-delay: 0.1s;">Cuidado, técnica e segurança que fazem a diferença.</p>
-                </div>
-                <div class="grid md:grid-cols-2 gap-x-12 gap-y-10 max-w-4xl mx-auto">
-                    <!-- Item 1 -->
-                    <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.1s;">
-                        <div class="text-3xl text-accent-orange">✓</div>
-                        <div>
-                            <h3 class="font-display text-xl font-bold text-teal-dark mb-1">Especialização em Castração</h3>
-                            <p class="text-neutral-gray leading-relaxed">Foco total em procedimentos seguros e humanizados para cães e gatos.</p>
-                        </div>
-                    </div>
-                    <!-- Item 2 -->
-                    <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.2s;">
-                        <div class="text-3xl text-accent-orange">✓</div>
-                        <div>
-                            <h3 class="font-display text-xl font-bold text-teal-dark mb-1">Atendimento Humanizado</h3>
-                            <p class="text-neutral-gray leading-relaxed">Seu pet é tratado com carinho, paciência e respeito em todas as etapas.</p>
-                        </div>
-                    </div>
-                    <!-- Item 3 -->
-                    <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.3s;">
-                        <div class="text-3xl text-accent-orange">✓</div>
-                        <div>
-                            <h3 class="font-display text-xl font-bold text-teal-dark mb-1">Experiência e Confiança</h3>
-                            <p class="text-neutral-gray leading-relaxed">Mais de 10 anos de atuação e centenas de famílias satisfeitas.</p>
-                        </div>
-                    </div>
-                    <!-- Item 4 -->
-                    <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.4s;">
-                        <div class="text-3xl text-accent-orange">✓</div>
-                        <div>
-                            <h3 class="font-display text-xl font-bold text-teal-dark mb-1">Suporte Pós-Operatório</h3>
-                            <p class="text-neutral-gray leading-relaxed">Acompanhamento completo para garantir a recuperação tranquila do seu pet.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      // FAQ
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      faqQuestions.forEach(button => {
+        const answer = button.nextElementSibling;
+        const icon = button.querySelector('.faq-icon');
 
-        <!-- Gemini API Powered Post-Op Care Plan -->
-        <section id="gemini-care-plan" class="py-20 lg:py-28 bg-white">
-            <div class="container mx-auto max-w-6xl px-6">
-                <div class="bg-sand border border-gray-200/50 rounded-2xl p-8 lg:p-12 text-center fade-in">
-                    <h2 class="font-display text-3xl md:text-4xl font-bold text-teal-dark">✨ Plano de Cuidados Pós-Operatório com IA</h2>
-                    <p class="text-lg text-neutral-gray mt-4 max-w-3xl mx-auto leading-relaxed">Receba um guia personalizado para a recuperação do seu pet. Preencha os campos abaixo para começar.</p>
-                    
-                    <div class="grid sm:grid-cols-3 gap-6 max-w-2xl mx-auto my-8 text-left">
-                        <div>
-                            <label for="pet-species" class="block text-sm font-medium text-teal-dark">Espécie</label>
-                            <select id="pet-species" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-teal-primary focus:border-teal-primary">
-                                <option>Cachorro</option>
-                                <option>Gato</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="pet-size" class="block text-sm font-medium text-teal-dark">Porte</label>
-                            <select id="pet-size" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-teal-primary focus:border-teal-primary">
-                                <option>Pequeno</option>
-                                <option>Médio</option>
-                                <option>Grande</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="pet-temperament" class="block text-sm font-medium text-teal-dark">Temperamento</label>
-                            <select id="pet-temperament" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-teal-primary focus:border-teal-primary">
-                                <option>Calmo</option>
-                                <option>Agitado</option>
-                                <option>Ansioso</option>
-                            </select>
-                        </div>
-                    </div>
+        if (answer.classList.contains('max-h-screen')) {
+          icon.textContent = '-';
+        } else {
+          answer.style.maxHeight = '0px';
+          icon.textContent = '+';
+        }
 
-                    <button id="generate-plan-btn" class="bg-teal-primary text-white font-bold px-8 py-4 rounded-lg text-lg hover:bg-teal-dark transition-transform hover:scale-105 shadow-lg">
-                        Gerar Plano de Cuidados
-                    </button>
-
-                    <div id="care-plan-result" class="mt-8 text-left bg-white p-6 rounded-2xl border border-gray-200/50 shadow-inner" style="display: none;">
-                        <div id="loading-spinner" class="flex justify-center items-center py-8" style="display: none;">
-                            <div class="loader"></div>
-                        </div>
-                        <div id="plan-content"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="py-20 lg:py-28">
-            <div class="container mx-auto max-w-6xl px-6">
-                <div class="text-center mb-16">
-                    <h2 class="font-display text-3xl md:text-4xl font-bold text-teal-dark fade-in">O que nossos clientes dizem</h2>
-                    <p class="text-lg text-neutral-gray mt-4 max-w-2xl mx-auto leading-relaxed fade-in" style="animation-delay: 0.1s;">A confiança de quem já passou por aqui é nossa maior recompensa.</p>
-                </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Testimonial 1 -->
-                    <div class="bg-white p-8 rounded-2xl fade-in" style="animation-delay: 0.1s;">
-                        <div class="text-5xl text-teal-primary/20 mb-4">“</div>
-                        <p class="text-neutral-gray italic mb-6 leading-relaxed">A Dra. Cleyde cuidou do meu cachorro com todo carinho. A castração foi tranquila e recebi todas as orientações. Excelente profissional!”</p>
-                        <div class="flex items-center gap-4">
-                            <img src="https://i.pravatar.cc/150?img=12" alt="Avatar de Márcio" class="w-12 h-12 rounded-full object-cover">
-                            <div>
-                                <p class="font-bold text-teal-dark">Márcio, Méier</p>
-                                <p class="text-yellow-500">★★★★★</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 2 -->
-                    <div class="bg-white p-8 rounded-2xl fade-in" style="animation-delay: 0.2s;">
-                        <div class="text-5xl text-teal-primary/20 mb-4">“</div>
-                        <p class="text-neutral-gray italic mb-6 leading-relaxed">Levei minha gata para castrar e fiquei muito satisfeita. Ela explicou tudo com paciência e transmitiu segurança em cada etapa.”</p>
-                        <div class="flex items-center gap-4">
-                            <img src="https://i.pravatar.cc/150?img=5" alt="Avatar de Ingrid" class="w-12 h-12 rounded-full object-cover">
-                            <div>
-                                <p class="font-bold text-teal-dark">Ingrid, Rio das Pedras</p>
-                                <p class="text-yellow-500">★★★★★</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 3 -->
-                    <div class="bg-white p-8 rounded-2xl fade-in" style="animation-delay: 0.3s;">
-                        <div class="text-5xl text-teal-primary/20 mb-4">“</div>
-                        <p class="text-neutral-gray italic mb-6 leading-relaxed">A Dra. Cleyde é maravilhosa! Minha cadelinha foi tratada como se fosse da família. Recomendo a todos que buscam um atendimento humanizado.”</p>
-                        <div class="flex items-center gap-4">
-                            <img src="https://i.pravatar.cc/150?img=32" alt="Avatar de Bruna" class="w-12 h-12 rounded-full object-cover">
-                            <div>
-                                <p class="font-bold text-teal-dark">Bruna, Recreio</p>
-                                <p class="text-yellow-500">★★★★★</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section id="faq" class="py-20 lg:py-28 bg-white">
-            <div class="container mx-auto max-w-6xl px-6">
-                <div class="text-center mb-16">
-                    <h2 class="font-display text-3xl md:text-4xl font-bold text-teal-dark fade-in">Perguntas Frequentes</h2>
-                    <p class="text-lg text-neutral-gray mt-4 max-w-2xl mx-auto leading-relaxed fade-in" style="animation-delay: 0.1s;">Tire suas principais dúvidas sobre o procedimento de castração.</p>
-                </div>
-                <div class="max-w-3xl mx-auto space-y-4 fade-in" style="animation-delay: 0.2s;">
-                    <!-- FAQ Item 1 -->
-                    <div class="bg-sand border border-gray-200/50 rounded-2xl shadow-sm">
-                        <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg text-teal-dark">
-                            <span>Como funciona a castração?</span>
-                            <span class="faq-icon text-teal-primary text-2xl transform transition-transform duration-300">-</span>
-                        </button>
-                        <div class="faq-answer overflow-hidden max-h-screen">
-                            <p class="px-6 pb-6 text-neutral-gray leading-relaxed">Antes do procedimento, o pet passa por uma avaliação clínica. No dia da cirurgia, é feita anestesia geral, com todo o monitoramento necessário. A cirurgia dura em média de 30 a 60 minutos e, geralmente, o pet recebe alta no mesmo dia.</p>
-                        </div>
-                    </div>
-                    <!-- FAQ Item 2 -->
-                    <div class="bg-sand border border-gray-200/50 rounded-2xl shadow-sm">
-                        <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg text-teal-dark">
-                            <span>Precisa de exames antes da castração?</span>
-                            <span class="faq-icon text-teal-primary text-2xl transform transition-transform duration-300">+</span>
-                        </button>
-                        <div class="faq-answer overflow-hidden max-h-0">
-                            <p class="px-6 pb-6 text-neutral-gray leading-relaxed">Sim, é fundamental. Sempre realizamos exames de sangue e, quando necessário, testes de função renal, hepática e avaliação cardiológica. Isso garante que o animal esteja saudável e seguro para a anestesia.</p>
-                        </div>
-                    </div>
-                     <!-- FAQ Item 3 -->
-                    <div class="bg-sand border border-gray-200/50 rounded-2xl shadow-sm">
-                        <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg text-teal-dark">
-                            <span>Como funciona o pós-operatório?</span>
-                            <span class="faq-icon text-teal-primary text-2xl transform transition-transform duration-300">+</span>
-                        </button>
-                        <div class="faq-answer overflow-hidden max-h-0">
-                            <p class="px-6 pb-6 text-neutral-gray leading-relaxed">O pet recebe medicação para dor e antibióticos. É importante usar o colar elizabetano para evitar que ele mexa nos pontos e restringir atividades físicas. O retorno para revisão acontece entre 7 a 10 dias.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final CTA -->
-        <section id="final-cta" class="py-20 lg:py-28 bg-gradient-to-br from-teal-primary to-teal-dark text-white">
-            <div class="container mx-auto max-w-6xl px-6">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="text-center lg:text-left fade-in">
-                        <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
-                            Seu pet merece cuidado e segurança.
-                        </h2>
-                        <p class="text-lg text-white/90 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                           Agende a castração agora e garanta o bem-estar do seu melhor amigo.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                             <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="bg-white text-teal-primary font-bold px-8 py-4 rounded-lg text-lg hover:bg-sand transition-transform hover:scale-105 shadow-lg">
-                                Agendar no WhatsApp
-                            </a>
-                            <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida." target="_blank" class="bg-transparent text-white font-bold px-8 py-4 rounded-lg text-lg hover:bg-white/10 transition-colors border-2 border-white">
-                                Tirar dúvidas
-                            </a>
-                        </div>
-                    </div>
-                    <div class="flex justify-center fade-in" style="animation-delay: 0.2s;">
-                        <img src="https://s.unsplash.com/photo-1548681528-6a5c45b66b42?q=80&w=1974&auto=format&fit=crop" alt="Gato relaxado usando um colar elizabetano após a cirurgia" class="w-full max-w-md rounded-2xl shadow-2xl">
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-teal-dark text-white">
-        <div class="container mx-auto max-w-6xl px-6 py-16">
-            <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-12">
-                <div class="md:col-span-3 lg:col-span-1">
-                    <h3 class="text-2xl font-display font-bold mb-4">ICX VET</h3>
-                    <p class="text-white/70 leading-relaxed">Cuidado veterinário especializado em castração de cães e gatos, com foco em segurança e atendimento humanizado.</p>
-                </div>
-                <div>
-                     <h4 class="font-display font-bold mb-4">Contato</h4>
-                     <ul class="space-y-2 text-white/70">
-                         <li><a href="tel:+5521995751829" class="hover:text-white">(21) 99575-1829</a></li>
-                         <li><p>Atendimento: Seg a Sex, 9h-18h</p></li>
-                         <li><p>Rio de Janeiro - RJ</p></li>
-                         <li><a href="https://maps.google.com/?q=Rio+de+Janeiro" target="_blank" class="hover:text-white underline">Como chegar</a></li>
-                     </ul>
-                </div>
-                 <div>
-                     <h4 class="font-display font-bold mb-4">Informações</h4>
-                     <ul class="space-y-2 text-white/70">
-                         <li><p>CRMV-RJ: 12345</p></li>
-                         <li><p>CNPJ: 00.123.456/0001-78</p></li>
-                         <li><a href="#faq" class="hover:text-white">Dúvidas Frequentes</a></li>
-                     </ul>
-                </div>
-                 <div>
-                     <h4 class="font-display font-bold mb-4">Redes Sociais</h4>
-                     <div class="flex space-x-4">
-                         <a href="https://www.instagram.com/icx_vet/" target="_blank" class="hover:opacity-80">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg>
-                         </a>
-                         <a href="https://www.facebook.com/cleyde.xerem.2025/" target="_blank" class="hover:opacity-80">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v2.385z"/></svg>
-                         </a>
-                     </div>
-                </div>
-            </div>
-            <div class="border-t border-white/10 mt-12 pt-8 text-center text-sm text-white/50">
-                <p>&copy; 2025 ICX VET. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Floating WhatsApp Button -->
-    <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="md:hidden fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg z-40">
-        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.269.655 4.398 1.919 6.161l-.219 1.023.992.494 2.238-1.233.122.062zm4.383-5.187c-.099-.149-.523-.265-.738-.325-.214-.06-.487-.061-.701.061-.213.122-.339.265-.438.41-.099.149-.198.335-.297.521-.099.185-.198.395-.297.581-.247.456-.516.927-.814 1.343-.325.456-.714.949-1.085 1.218-.522.38-1.036.531-1.549.531-.512 0-1.023-.099-1.435-.297-.412-.198-.799-.465-1.124-.799-.325-.335-.581-.714-.78-1.124-.198-.412-.308-.869-.308-1.355 0-.198.031-.385.099-.581.06-.185.12-.359.219-.521.12-.185.265-.359.438-.504.173-.149.384-.236.612-.236.229 0 .438.06.612.185.173.122.282.297.38.482.099.185.149.41.149.631 0 .229-.03.438-.099.631-.06.185-.12.359-.219.521-.099.164-.186.319-.264.456-.08.135-.149.264-.208.38-.06.109-.099.208-.12.297-.03.089-.03.176-.03.247 0 .06.011.121.031.185.02.06.06.135.12.219.06.089.135.176.219.264.089.089.186.164.297.247.109.089.219.149.335.198.12.049.247.079.38.079.135 0 .264-.03.38-.099.12-.06.219-.135.297-.219.08-.089.149-.186.208-.297.06-.109.109-.219.149-.335l.12-.41c.06-.185.12-.359.219-.521.099-.164.236-.297.41-.395.173-.099.359-.149.561-.149.198 0 .385.049.531.149.149.099.265.236.359.41.099.173.149.384.149.612 0 .229-.049.438-.149.631-.099.198-.219.385-.38.561-.164.173-.359.329-.581.456-.219.121-.465.198-.738.219-.264.03-.531.03-.78-.03-.247-.06-.482-.149-.691-.264l-.109-.06c-.219-.122-.428-.265-.612-.438-.185-.173-.359-.38-.504-.612s-.236-.482-.297-.738c-.06-.247-.06-.494-.03-.728.03-.236.099-.465.198-.681.099-.219.219-.428.38-.612.163-.186.358-.359.581-.521.219-.164.465-.297.738-.395.273-.099.561-.149.869-.149.308 0 .605.049.892.149.288.099.552.236.799.41.247.173.465.384.651.631.185.247.329.516.438.814.109.297.164.612.164.938 0 .412-.079.814-.236 1.192-.149.38-.359.728-.612 1.036-.247.308-.531.581-.856.814-.325.236-.681.438-1.06.591-.38.149-.78.219-1.192.219-.482 0-.951-.089-1.408-.264-.456-.173-.882-.41-1.278-.714-.396-.308-.752-.691-1.06-1.148s-.541-.975-.714-1.549c-.173-.571-.264-1.166-.264-1.785 0-.297.04-.581.12-.856.08-.273.186-.531.308-.769.12-.236.264-.456.427-.651.164-.198.359-.372.581-.521.219-.149.465-.265.728-.344.264-.089.531-.135.814-.135.273 0 .531.049.78.149.247.099.465.219.651.359.185.135.339.297.465.482.12.185.198.395.236.612.04.219.04.438.03.651-.011.219-.06.428-.135.612-.08.186-.173.35-.297.494z"/></svg>
-    </a>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Fade-in on Scroll Animation ---
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach(el => observer.observe(el));
-
-            // --- FAQ Accordion ---
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            faqQuestions.forEach(button => {
-                const answer = button.nextElementSibling;
-                const icon = button.querySelector('.faq-icon');
-                
-                if (!button.parentElement.querySelector('.max-h-screen')) {
-                    answer.style.maxHeight = '0px';
-                    icon.textContent = '+';
-                }
-
-                button.addEventListener('click', () => {
-                    const isOpen = answer.style.maxHeight !== '0px';
-                    if (isOpen) {
-                        answer.style.maxHeight = '0px';
-                        icon.textContent = '+';
-                    } else {
-                        answer.style.maxHeight = answer.scrollHeight + 'px';
-                        icon.textContent = '-';
-                    }
-                });
-            });
-
-             // --- Gemini API Care Plan Generator ---
-            const generateBtn = document.getElementById('generate-plan-btn');
-            
-            // This check prevents the error if the button is not on the page.
-            if (generateBtn) {
-                const resultDiv = document.getElementById('care-plan-result');
-                const spinner = document.getElementById('loading-spinner');
-                const planContent = document.getElementById('plan-content');
-
-                generateBtn.addEventListener('click', async () => {
-                    const species = document.getElementById('pet-species').value;
-                    const size = document.getElementById('pet-size').value;
-                    const temperament = document.getElementById('pet-temperament').value;
-
-                    resultDiv.style.display = 'block';
-                    spinner.style.display = 'flex';
-                    planContent.innerHTML = '';
-
-                    const prompt = `Como um veterinário especialista, crie um plano de cuidados pós-operatório detalhado e de fácil compreensão para um ${species} de porte ${size} e temperamento ${temperament} que acabou de ser castrado. O plano deve ser dividido em seções claras: "Primeiras 24 Horas", "Primeira Semana", "Alimentação e Hidratação", "Medicação (geral)", e "Sinais de Alerta". Use uma linguagem acolhedora e tranquilizadora para o tutor.`;
-
-                    try {
-                        const text = await callGeminiApi(prompt);
-                        
-                        let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                        formattedText = formattedText.replace(/\n/g, '<br>');
-
-                        planContent.innerHTML = `<h3 class="font-display text-2xl font-bold text-teal-dark mb-4">Seu Plano de Cuidados Personalizado</h3><p class="text-neutral-gray leading-relaxed">${formattedText}</p>`;
-
-                    } catch (error) {
-                        console.error("Error calling Gemini API:", error);
-                        planContent.innerHTML = `<p class="text-red-500">Desculpe, ocorreu um erro ao gerar o plano. Por favor, tente novamente mais tarde.</p>`;
-                    } finally {
-                        spinner.style.display = 'none';
-                    }
-                });
-            }
-            
-            async function callGeminiApi(prompt) {
-                const apiKey = ""; // Leave empty
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-                const payload = {
-                    contents: [{ parts: [{ text: prompt }] }]
-                };
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    throw new Error(`API request failed with status ${response.status}`);
-                }
-
-                const result = await response.json();
-                
-                if (result.candidates && result.candidates[0].content.parts[0].text) {
-                    return result.candidates[0].content.parts[0].text;
-                } else {
-                    console.error("Unexpected API response structure:", result);
-                    return "Não foi possível gerar o plano de cuidados. A resposta da IA estava vazia ou em um formato inesperado.";
-                }
-            }
+        button.addEventListener('click', () => {
+          const isOpen = answer.style.maxHeight !== '0px' && answer.style.maxHeight !== '';
+          if (isOpen) {
+            answer.style.maxHeight = '0px';
+            icon.textContent = '+';
+          } else {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            icon.textContent = '-';
+          }
         });
-    </script>
+      });
+
+      // Plano com IA (exemplo – sem chave)
+      const generateBtn = document.getElementById('generate-plan-btn');
+      if (generateBtn) {
+        const resultDiv = document.getElementById('care-plan-result');
+        const spinner = document.getElementById('loading-spinner');
+        const planContent = document.getElementById('plan-content');
+
+        generateBtn.addEventListener('click', async () => {
+          const species = document.getElementById('pet-species').value;
+          const size = document.getElementById('pet-size').value;
+          const temperament = document.getElementById('pet-temperament').value;
+
+          resultDiv.style.display = 'block';
+          spinner.style.display = 'flex';
+          planContent.innerHTML = '';
+
+          const prompt = `Como um veterinário especialista, crie um plano de cuidados pós-operatório detalhado e de fácil compreensão para um ${species} de porte ${size} e temperamento ${temperamento} que acabou de ser castrado. O plano deve ser dividido em seções claras: "Primeiras 24 Horas", "Primeira Semana", "Alimentação e Hidratação", "Medicação (geral)", e "Sinais de Alerta". Use uma linguagem acolhedora e tranquilizadora para o tutor.`;
+
+          try {
+            const text = await callGeminiApi(prompt);
+            let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            formattedText = formattedText.replace(/\n/g, '<br>');
+            planContent.innerHTML = `<h3 class="font-display text-2xl font-bold text-teal-dark mb-4">Seu Plano de Cuidados Personalizado</h3><p class="text-neutral-gray leading-relaxed">${formattedText}</p>`;
+          } catch (error) {
+            console.error("Error calling Gemini API:", error);
+            planContent.innerHTML = `<p class="text-red-500">Desculpe, ocorreu um erro ao gerar o plano. Por favor, tente novamente mais tarde.</p>`;
+          } finally {
+            spinner.style.display = 'none';
+          }
+        });
+      }
+
+      async function callGeminiApi(prompt) {
+        const apiKey = ""; // deixe vazio para não expor
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+        const payload = { contents: [{ parts: [{ text: prompt }] }] };
+
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) throw new Error(`API request failed with status ${response.status}`);
+
+        const result = await response.json();
+        if (result.candidates && result.candidates[0].content?.parts?.[0]?.text) {
+          return result.candidates[0].content.parts[0].text;
+        } else {
+          console.error("Unexpected API response structure:", result);
+          return "Não foi possível gerar o plano de cuidados. A resposta da IA estava vazia ou em um formato inesperado.";
+        }
+      }
+    });
+  </script>
 </body>
 </html>
