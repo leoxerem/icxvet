@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICX VET - Castração Segura e Humanizada</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* For the testimonial slider on mobile */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Animation for fade-in on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* FAQ Accordion transition */
+        .faq-answer {
+            transition: max-height 0.3s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- 0. Navigation Bar (Fixed) -->
+    <header id="navbar" class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-800">ICX VET</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#hero" class="text-gray-600 hover:text-blue-800 transition-colors">Início</a>
+                <a href="#why-choose" class="text-gray-600 hover:text-blue-800 transition-colors">Sobre Nós</a>
+                <a href="#features" class="text-gray-600 hover:text-blue-800 transition-colors">Serviços</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-blue-800 transition-colors">Depoimentos</a>
+                <a href="#faq" class="text-gray-600 hover:text-blue-800 transition-colors">Contato</a>
+            </nav>
+            <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1%2C%20vi%20seu%20Instagram%20e%20gostaria%20de%20saber%20mais%20sobre%20seu%20atendimento" target="_blank" class="bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg hover:bg-blue-800 transition-transform hover:scale-105 shadow-sm">
+                Agendar Consulta
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Hero (Hook Section) -->
+        <section id="hero" class="pt-32 pb-20 lg:pt-48 lg:pb-32 relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-center lg:text-left">
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-1 rounded-full mb-4 fade-in">
+                            ✅ +500 animais atendidos com segurança e carinho
+                        </span>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-4 fade-in" style="animation-delay: 0.1s;">
+                            🐾 Castração Segura e Humanizada para Cães e Gatos
+                        </h1>
+                        <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0 fade-in" style="animation-delay: 0.2s;">
+                            Cuidado especializado em castração, com toda a estrutura e amor que seu pet merece.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-6 fade-in" style="animation-delay: 0.3s;">
+                            <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1%2C%20vi%20seu%20Instagram%20e%20gostaria%20de%20saber%20mais%20sobre%20seu%20atendimento" target="_blank" class="bg-blue-700 text-white font-bold px-8 py-4 rounded-lg text-lg hover:bg-blue-800 transition-transform hover:scale-105 shadow-lg">
+                                👉 Agendar Consulta
+                            </a>
+                        </div>
+                        <p class="text-sm text-gray-500 fade-in" style="animation-delay: 0.4s;">
+                            Mais de 10 anos de experiência e centenas de famílias satisfeitas
+                        </p>
+                    </div>
+                    <div class="flex justify-center fade-in" style="animation-delay: 0.2s;">
+                        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAJgAmADASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECA//EABYQAQEBAAAAAAAAAAAAAAAAAAABEv/aAAwDAQACEAMQAAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"- alt="Logo da ICX VET" class="rounded-full shadow-2xl w-full max-w-md lg:max-w-lg">
+                    </div>
+                </div>
+            </div>
+            <!-- Gentle background motion element -->
+            <div class="absolute top-0 -right-40 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl opacity-50 animate-blob" style="animation-delay: 2s;"></div>
+            <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-blue-500/10 rounded-full filter blur-3xl opacity-50 animate-blob-reverse"></div>
+        </section>
+
+        <!-- 3. Features Section -->
+        <section id="features" class="py-20 lg:py-28">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 fade-in">Tudo que seu pet precisa em um só lugar</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto fade-in" style="animation-delay: 0.1s;">Nossos serviços são pensados para garantir a máxima segurança e conforto.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Main Card -->
+                    <div class="md:col-span-2 lg:col-span-3 bg-blue-50 p-8 rounded-2xl border border-blue-200 shadow-sm fade-in">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-2">Agendamento rápido</h3>
+                        <p class="text-gray-600">Marque a consulta do seu pet de forma prática pelo WhatsApp.</p>
+                    </div>
+                    <!-- Secondary Cards -->
+                    <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 fade-in" style="animation-delay: 0.1s;">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Avaliação prévia</h3>
+                        <p class="text-gray-600">Exame clínico detalhado para garantir segurança antes do procedimento.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 fade-in" style="animation-delay: 0.2s;">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Castração segura</h3>
+                        <p class="text-gray-600">Estrutura adequada e equipe especializada em procedimentos veterinários.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 fade-in" style="animation-delay: 0.3s;">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Acompanhamento no pós-operatório</h3>
+                        <p class="text-gray-600">Orientações completas e suporte para a recuperação do pet.</p>
+                    </div>
+                    <div class="lg:col-start-2 bg-white p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 fade-in" style="animation-delay: 0.4s;">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Atendimento humanizado</h3>
+                        <p class="text-gray-600">Tratamos cada animal com carinho, respeito e cuidado individual.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. "Why Choose" Section -->
+        <section id="why-choose" class="py-20 lg:py-28 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 fade-in">Por que escolher a ICX VET?</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto fade-in" style="animation-delay: 0.1s;">Nossa dedicação se reflete em cada detalhe do nosso atendimento.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center p-6 fade-in" style="animation-delay: 0.1s;">
+                        <h3 class="text-xl font-bold text-blue-800 mb-2">Especialização em Castração</h3>
+                        <p class="text-gray-600">Foco total em procedimentos seguros e humanizados para cães e gatos.</p>
+                    </div>
+                    <div class="text-center p-6 fade-in" style="animation-delay: 0.2s;">
+                        <h3 class="text-xl font-bold text-blue-800 mb-2">Atendimento Humanizado</h3>
+                        <p class="text-gray-600">Seu pet é tratado com carinho, paciência e respeito em todas as etapas.</p>
+                    </div>
+                    <div class="text-center p-6 fade-in" style="animation-delay: 0.3s;">
+                        <h3 class="text-xl font-bold text-blue-800 mb-2">Experiência e Confiança</h3>
+                        <p class="text-gray-600">Mais de 10 anos de atuação e centenas de famílias atendidas.</p>
+                    </div>
+                    <div class="text-center p-6 fade-in" style="animation-delay: 0.4s;">
+                        <h3 class="text-xl font-bold text-blue-800 mb-2">Suporte no Pós-Operatório</h3>
+                        <p class="text-gray-600">Acompanhamento completo para garantir a recuperação tranquila do seu pet.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Testimonials Section -->
+        <section id="testimonials" class="py-20 lg:py-28">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 fade-in">O que nossos clientes dizem</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto fade-in" style="animation-delay: 0.1s;">A confiança de quem já passou por aqui é nossa maior recompensa.</p>
+                </div>
+                <!-- On mobile, this will be a scrollable container -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 fade-in">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-blue-50 p-8 rounded-2xl border border-blue-200 flex flex-col items-center text-center">
+                        <img src="https://placehold.co/80x80/EBF8FF/3182CE?text=M" alt="Avatar de Márcio" class="w-20 h-20 rounded-full mb-4 object-cover">
+                        <p class="text-yellow-500 text-2xl mb-2">★★★★★</p>
+                        <p class="text-gray-600 italic mb-4">“A Dra. Cleyde cuidou do meu cachorro com todo carinho. A castração foi tranquila e recebi todas as orientações do pós-operatório. Excelente profissional!”</p>
+                        <p class="font-bold text-gray-800">Márcio, Méier</p>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-blue-50 p-8 rounded-2xl border border-blue-200 flex flex-col items-center text-center">
+                        <img src="https://placehold.co/80x80/EBF8FF/3182CE?text=I" alt="Avatar de Ingrid" class="w-20 h-20 rounded-full mb-4 object-cover">
+                        <p class="text-yellow-500 text-2xl mb-2">★★★★★</p>
+                        <p class="text-gray-600 italic mb-4">“Levei minha gata para castrar com a Dra. Cleyde e fiquei muito satisfeita. Ela explicou tudo com paciência e transmitiu segurança em cada etapa.”</p>
+                        <p class="font-bold text-gray-800">Ingrid, Rio das Pedras</p>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="bg-blue-50 p-8 rounded-2xl border border-blue-200 flex flex-col items-center text-center">
+                        <img src="https://placehold.co/80x80/EBF8FF/3182CE?text=B" alt="Avatar de Bruna" class="w-20 h-20 rounded-full mb-4 object-cover">
+                        <p class="text-yellow-500 text-2xl mb-2">★★★★★</p>
+                        <p class="text-gray-600 italic mb-4">“A Dra. Cleyde é maravilhosa! Minha cadelinha foi tratada como se fosse da família. Recomendo a todos que buscam um atendimento humanizado.”</p>
+                        <p class="font-bold text-gray-800">Bruna, Recreio</p>
+                    </div>
+                    <!-- Testimonial 4 -->
+                    <div class="bg-blue-50 p-8 rounded-2xl border border-blue-200 flex flex-col items-center text-center">
+                        <img src="https://placehold.co/80x80/EBF8FF/3182CE?text=B" alt="Avatar de Bruno" class="w-20 h-20 rounded-full mb-4 object-cover">
+                        <p class="text-yellow-500 text-2xl mb-2">★★★★★</p>
+                        <p class="text-gray-600 italic mb-4">“Desde o primeiro contato, a Dra. Cleyde foi atenciosa e cuidadosa. A castração do meu gato foi feita com total segurança. Estou muito feliz com o resultado.”</p>
+                        <p class="font-bold text-gray-800">Bruno, Rio das Pedras</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. FAQ Section -->
+        <section id="faq" class="py-20 lg:py-28 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 fade-in">Perguntas Frequentes</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto fade-in" style="animation-delay: 0.1s;">Tire suas principais dúvidas sobre o procedimento de castração.</p>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-4 fade-in" style="animation-delay: 0.2s;">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg">
+                            <span>Como funciona a castração?</span>
+                            <span class="faq-icon text-blue-700 transform transition-transform duration-300">-</span>
+                        </button>
+                        <div class="faq-answer overflow-hidden max-h-screen">
+                            <p class="px-6 pb-6 text-gray-600">Antes do procedimento, o pet passa por uma avaliação clínica. No dia da cirurgia, é feita anestesia geral, com todo o monitoramento necessário para garantir a segurança. A cirurgia dura em média de 30 a 60 minutos e, geralmente, o pet recebe alta no mesmo dia.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg">
+                            <span>Precisa de exames antes da castração?</span>
+                            <span class="faq-icon text-blue-700 transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer overflow-hidden max-h-0">
+                            <p class="px-6 pb-6 text-gray-600">Sim, é fundamental. Sempre realizamos exames de sangue (hemograma completo) e, quando necessário, testes de função renal, hepática e avaliação cardiológica. Isso garante que o animal esteja saudável e seguro para a anestesia.</p>
+                        </div>
+                    </div>
+                    <!-- Add more FAQ items similarly -->
+                    <div class="bg-white border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg">
+                            <span>Com quantos meses posso castrar meu pet?</span>
+                            <span class="faq-icon text-blue-700 transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer overflow-hidden max-h-0">
+                            <p class="px-6 pb-6 text-gray-600">No caso dos gatos, a recomendação é a partir de 4 a 6 meses. Para cães, geralmente após 6 meses, mas sempre avaliamos cada caso individualmente para indicar o melhor momento.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg">
+                            <span>Quanto tempo dura e como é a cirurgia?</span>
+                            <span class="faq-icon text-blue-700 transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer overflow-hidden max-h-0">
+                            <p class="px-6 pb-6 text-gray-600">A castração é rápida, em torno de 30 a 60 minutos. Após a cirurgia, o pet fica em observação e, quando totalmente acordado e estável, recebe alta. O tutor leva para casa todas as orientações necessárias para o cuidado.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg">
+                            <span>Como funciona o pós-operatório?</span>
+                            <span class="faq-icon text-blue-700 transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer overflow-hidden max-h-0">
+                            <p class="px-6 pb-6 text-gray-600">O pet recebe medicação para dor e antibióticos, se necessário. É importante usar o colar elizando para evitar que ele mexa nos pontos e restringir atividades físicas. O retorno para revisão e retirada dos pontos acontece entre 7 a 10 dias.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg">
+                            <span>Como posso agendar ou tirar dúvidas?</span>
+                            <span class="faq-icon text-blue-700 transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer overflow-hidden max-h-0">
+                            <p class="px-6 pb-6 text-gray-600">Você pode falar diretamente conosco pelo WhatsApp, que está disponível no site. Assim conseguimos orientar, tirar dúvidas e marcar a consulta ou o procedimento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Final CTA -->
+        <section id="final-cta" class="py-20 lg:py-28 bg-blue-700 text-white relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-center lg:text-left fade-in">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                            🐾 Seu pet merece cuidado e segurança. Agende a castração agora!
+                        </h2>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1%2C%20vi%20seu%20Instagram%20e%20gostaria%20de%20saber%20mais%20sobre%20seu%20atendimento" target="_blank" class="bg-white text-blue-700 font-bold px-8 py-4 rounded-lg text-lg hover:bg-gray-200 transition-transform hover:scale-105">
+                                👉 Agendar Consulta
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex justify-center fade-in" style="animation-delay: 0.2s;">
+                        <img src="https://placehold.co/400x400/FFFFFF/3182CE?text=App+Mockup" alt="App Mockup" class="w-full max-w-xs rounded-2xl shadow-2xl">
+                    </div>
+                </div>
+            </div>
+             <!-- Gentle background motion element -->
+            <div class="absolute -top-20 -left-40 w-96 h-96 bg-white/10 rounded-full filter blur-3xl opacity-50 animate-blob"></div>
+            <div class="absolute bottom-0 -right-20 w-80 h-80 bg-white/10 rounded-full filter blur-3xl opacity-50 animate-blob-reverse" style="animation-delay: 2s;"></div>
+        </section>
+    </main>
+
+    <!-- 8. Footer -->
+    <footer class="bg-gray-900 text-gray-400">
+        <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <p class="mb-4 md:mb-0">&copy; 2025 ICX VET. Todos os direitos reservados.</p>
+            <div class="flex space-x-6">
+                <a href="https://www.instagram.com/icx_vet/" target="_blank" class="hover:text-white transition-colors">Instagram</a>
+                <a href="https://www.facebook.com/cleyde.xerem.2025/" target="_blank" class="hover:text-white transition-colors">Facebook</a>
+                <a href="https://api.whatsapp.com/send?phone=5521995751829&text=Ol%C3%A1%2C%20vi%20seu%20Instagram%20e%20gostaria%20de%20saber%20mais%20sobre%20seu%20atendimento" target="_blank" class="hover:text-white transition-colors">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Fade-in on Scroll Animation ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(el => observer.observe(el));
+
+            // --- FAQ Accordion ---
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(button => {
+                // Set initial state for all but the first item
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector('.faq-icon');
+                if (answer.style.maxHeight !== '0px') {
+                    // This handles the first item which is open by default
+                } else {
+                    answer.style.maxHeight = '0px';
+                    icon.textContent = '+';
+                    icon.classList.remove('rotate-180');
+                }
+
+                button.addEventListener('click', () => {
+                    const answer = button.nextElementSibling;
+                    const icon = button.querySelector('.faq-icon');
+                    const isOpen = answer.style.maxHeight !== '0px';
+
+                    if (isOpen) {
+                        answer.style.maxHeight = '0px';
+                        icon.textContent = '+';
+                        icon.classList.remove('rotate-180');
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        icon.textContent = '-';
+                        icon.classList.add('rotate-180');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
